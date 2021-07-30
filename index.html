@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    .floating-div {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: blue;
+        color: white;
+        padding: 15px;
+        pointer-events: none;
+       transform: translateY(-100%);
+        transition: transform 0.3s cubic-bezier(0.45, 0, 0.55, 1);
+    }
+    .floating-div.is-open {
+        pointer-events: auto;
+        background: red;
+        transform: translateY(0);
+    }
+
+    body {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        background: silver;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 30px;
+    }
+    .btn-search {
+        background-color: aqua;
+        padding: 10px 10px;
+        border-radius: 20px 20px;
+        margin-left: 10px;
+        border: 1px solid transparent;
+    }
+</style>
+<!-- search block -->
+<div class="floating-div js-search-box">
+    <form>
+        <input value="search">
+        <input type="submit" value="search">
+        <a class='js-search'>close btn</a>
+    </form>
+</div>
+<!--/search block -->
+<div class="container">
+    1914 translation by H. Rackham
+    "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"
+</div>
+
+<a class='js-search btn-search'>search</a>
+<script>
+    var searchBox = document.querySelector(".js-search-box");
+    document.querySelectorAll("js-search").forEach(function (btn) {
+            btn.click(function (event){
+                event.preventDefault();
+                searchBox.classList.toggle("is-open");
+            }) ;
+    });
+</script>
+</body>
+</html>
